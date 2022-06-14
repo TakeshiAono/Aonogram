@@ -1,3 +1,5 @@
+<%= image_tag @user %>
+
 <%= form_with(model: picture, local: true) do |form| %>
   <% if picture.errors.any? %>
     <div id="error_explanation">

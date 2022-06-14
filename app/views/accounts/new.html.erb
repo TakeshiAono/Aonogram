@@ -1,0 +1,9 @@
+<%= form_with(local: true, model: @user, url: accounts_path) do |user| %>
+  <%= user.label :name %>
+  <%= user.text_field :name %>
+  <%= user.label :email %>
+  <%= user.text_field :email %>
+  <%= user.label :password %>
+  <%= user.text_field :password %>
+  <%= user.submit "登録" %>
+<% end %>

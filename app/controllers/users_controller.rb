@@ -8,17 +8,20 @@ class UsersController < ApplicationController
 
   # GET /users/new
   def new
-    @user = User.new
+    @user = User.find_by(id: session[:user_id])
   end
 
   # GET /users/1/edit
   def edit
-  end
 
+  end
+  def show
+    redirect_to users_path
+  end
+  
   # POST /users or /users.json
   def create
     @user = User.new(user_params)
-
     respond_to do |format|
       if @user.save
         format.html { redirect_to user_url(@user), notice: "User was successfully created." }
@@ -29,7 +32,7 @@ class UsersController < ApplicationController
       end
     end
   end
-
+  
   # PATCH/PUT /users/1 or /users/1.json
   def update
     respond_to do |format|
@@ -51,6 +54,6 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:name, :email, :image)
+      params.require(:user).permit(:name, :email, :image, :image_cache)
     end
 end

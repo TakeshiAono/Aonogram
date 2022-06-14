@@ -1,2 +1,8 @@
-<h1>Login#new</h1>
-<p>Find me in app/views/login/new.html.erb</p>
+<%= form_with(local: true, model: @user, url:login_index_path) do |user| %>
+  <%= user.label :email %>
+  <%= user.text_field :email %>
+  <%= user.label :password %>
+  <%= user.text_field :password, type: :password %>
+  <%= user.submit "ログイン" %>
+<% end %>
+<%= link_to "アカウント登録", new_account_path %>
