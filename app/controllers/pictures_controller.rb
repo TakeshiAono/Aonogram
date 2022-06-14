@@ -19,6 +19,9 @@ class PicturesController < ApplicationController
   def edit
   end
 
+  def confirm
+  end
+
   # POST /pictures or /pictures.json
   def create
     @picture = Picture.new(picture_params)
