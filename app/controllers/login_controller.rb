@@ -7,7 +7,7 @@ class LoginController < ApplicationController
     if @user.authenticate(login_params[:password])
       session[:user_id] = @user.id
       if @user[:image]
-        redirect_to users_path
+        redirect_to pictures_path
       else
         redirect_to new_user_path
       end

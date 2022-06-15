@@ -1,1 +1,9 @@
-a
+<%= form_with(local: true, model: @picture) do |form|  %>
+  <%= form.label :coment  %>
+  <%= @picture.coment  %>
+  <%= form.hidden_field :coment  %>
+  <%= form.label :image  %>
+  <%= image_tag @picture.image.url  %>
+  <%= form.hidden_field :image_cache  %>
+  <%= form.submit %>
+<% end %>

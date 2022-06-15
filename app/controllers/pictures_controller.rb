@@ -8,6 +8,8 @@ class PicturesController < ApplicationController
 
   # GET /pictures/1 or /pictures/1.json
   def show
+    @favorite = Favorite.new
+    @picture = Picture.find(params[:id])
   end
 
   # GET /pictures/new
@@ -19,21 +21,28 @@ class PicturesController < ApplicationController
   def edit
   end
 
+  def favorite
+    Favorite.create(picture_id: params[:id], user_id: session[:user_id])
+    byebug
+    redirect_to pictures_path
+
+  end
+
+
   def confirm
+    @picture = Picture.new(picture_params)
+
   end
 
   # POST /pictures or /pictures.json
   def create
     @picture = Picture.new(picture_params)
+    @picture[:user_id] = session[:user_id]
+    
+    if @picture.save
+      redirect_to pictures_path
+    else
 
-    respond_to do |format|
-      if @picture.save
-        format.html { redirect_to picture_url(@picture), notice: "Picture was successfully created." }
-        format.json { render :show, status: :created, location: @picture }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @picture.errors, status: :unprocessable_entity }
-      end
     end
   end
 
@@ -68,6 +77,6 @@ class PicturesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def picture_params
-      params.require(:picture).permit(:user_id, :image, :coment)
+      params.require(:picture).permit( :image, :coment, :image_cache)
     end
 end

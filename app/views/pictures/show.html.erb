@@ -8,12 +8,20 @@
 <p>
   <strong>Image:</strong>
   <%= @picture.image %>
+    <%= image_tag @picture.image.url  %>
 </p>
 
 <p>
   <strong>Coment:</strong>
   <%= @picture.coment %>
 </p>
+<%# <%= form_with(local: true,  url: favorite_pictures_path) do |check| %> %>
+  <%# <%= check.hidden_field check: true %> %>
+  <%# <%= check.submit "お気に入り登録する" %> %>
+<%# <% end %> %>
+<%= byebug %>
+<%= link_to "お気に入り登録", favorite_picture_path(@picture.id) %>
 
-<%= link_to 'Edit', edit_picture_path(@picture) %> |
+
+<%= link_to 'Edit', edit_picture_path(@picture) %> 
 <%= link_to 'Back', pictures_path %>

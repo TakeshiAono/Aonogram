@@ -9,6 +9,9 @@ Rails.application.routes.draw do
     collection do
       post :confirm
     end
+    member do
+      get  :favorite
+    end
   end
   resources :users
   resources :accounts
