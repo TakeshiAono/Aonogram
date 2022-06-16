@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
   root to:"login#new"
+  resources :users
+  resources :accounts
+  resources :login
+  resources :favorites
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
   resources :pictures do
     collection do
       post :confirm
@@ -8,9 +13,4 @@ Rails.application.routes.draw do
       get  :favorite
     end
   end
-  resources :users
-  resources :accounts
-  resources :login
-  resources :favorites
-  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 end

@@ -15,15 +15,10 @@
   <strong>Coment:</strong>
   <%= @picture.coment %>
 </p>
-<%# <%= form_with(local: true,  url: favorite_pictures_path) do |check| %> %>
-  <%# <%= check.hidden_field check: true %> %>
-  <%# <%= check.submit "お気に入り登録する" %> %>
-<%# <% end %> %>
 
 <% unless User.find(session[:user_id]).favorite_pictures.find_by(id:@picture.id) then %>
   <%= link_to "お気に入り登録", favorite_picture_path(@picture.id) %>
 <% end %>
-
 
 <%= link_to 'Edit', edit_picture_path(@picture) %> 
 <%= link_to 'Back', pictures_path %>
