@@ -23,22 +23,21 @@ class PicturesController < ApplicationController
 
   def favorite
     Favorite.create(picture_id: params[:id], user_id: session[:user_id])
-
     redirect_to pictures_path
   end
 
 
   def confirm
     @picture = Picture.new(picture_params)
-
   end
-
+  
   # POST /pictures or /pictures.json
   def create
     @picture = Picture.new(picture_params)
     @picture[:user_id] = session[:user_id]
     
     if @picture.save
+      SendReportMailer.picture_upload_report(User.find(session[:user_id])).deliver
       redirect_to pictures_path
     else
 
