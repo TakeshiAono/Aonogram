@@ -15,7 +15,6 @@ class PicturesController < ApplicationController
   end
 
   def edit
-    byebug
       redirect_to pictures_path, notice: "投稿者ではないため編集できません"  unless session[:user_id] == Picture.find_by(id: params[:id])[:user_id]
   end
 
@@ -30,10 +29,12 @@ class PicturesController < ApplicationController
   
   def create
     @picture = Picture.new(picture_params)
-    @picture[:user_id] = session[:user_id]    
+    @picture[:user_id] = session[:user_id]
     if @picture.save
       SendReportMailer.picture_upload_report(User.find(session[:user_id])).deliver
       redirect_to pictures_path
+    else
+      render :new
     end
   end
 
