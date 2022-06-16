@@ -1,4 +1,4 @@
-<p>ログインユーザー:<%=@user.name  %></p>
+<p>ログインユーザー:<%= @user.name %></p>
 
 <%= image_tag @user.image.url, height:"100px", width:"100px" %>
 <%= link_to "アイコン編集", new_user_path %>

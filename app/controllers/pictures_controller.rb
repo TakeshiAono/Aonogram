@@ -23,9 +23,8 @@ class PicturesController < ApplicationController
 
   def favorite
     Favorite.create(picture_id: params[:id], user_id: session[:user_id])
-    byebug
-    redirect_to pictures_path
 
+    redirect_to pictures_path
   end
 
 

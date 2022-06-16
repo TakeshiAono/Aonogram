@@ -19,8 +19,10 @@
   <%# <%= check.hidden_field check: true %> %>
   <%# <%= check.submit "お気に入り登録する" %> %>
 <%# <% end %> %>
-<%= byebug %>
-<%= link_to "お気に入り登録", favorite_picture_path(@picture.id) %>
+
+<% unless User.find(session[:user_id]).favorite_pictures.find_by(id:@picture.id) then %>
+  <%= link_to "お気に入り登録", favorite_picture_path(@picture.id) %>
+<% end %>
 
 
 <%= link_to 'Edit', edit_picture_path(@picture) %> 
