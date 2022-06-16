@@ -1,7 +1,9 @@
 class LoginController < ApplicationController
+
   def new
     @user = User.new
   end
+
   def create
     @user = User.find_by(email: login_params[:email])
     if @user.authenticate(login_params[:password])
@@ -20,4 +22,5 @@ class LoginController < ApplicationController
   def login_params
     params.require(:user).permit(:email, :password)
   end
+  
 end

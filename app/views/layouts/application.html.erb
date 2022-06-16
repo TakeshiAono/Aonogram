@@ -4,7 +4,6 @@
     <title>Aonogram</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -13,4 +12,5 @@
     <%= render 'layouts/logout' unless URI.parse(request.url).path == new_login_path || URI.parse(request.url).path == new_account_path  %>
     <%= yield %>
   </body>
+
 </html>
