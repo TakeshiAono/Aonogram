@@ -17,4 +17,5 @@ Rails.application.routes.draw do
   resources :accounts
   resources :login
   resources :favorites
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 end
