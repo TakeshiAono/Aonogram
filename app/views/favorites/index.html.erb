@@ -1,5 +1,15 @@
-<%= byebug %>
-<%= form_with(model:@favorites, local: true) do |favorite| %>
-  <%= favorite.text_field :user_id %>
-  <%= favorite.text_field :picture_id %>
+
+
+
+<%# <%= form_with(model:@favorites, local: true) do |favorite| %> %>
+<% @pictures.each do |picture| %>
+<%# <%= byebug %> %>
+  <p><%= picture.coment %></p>
+  <p><%= image_tag picture.image.url if picture.image.url %></p>
 <% end %>
+<%# <% end %> %>
+
+
+
+
+

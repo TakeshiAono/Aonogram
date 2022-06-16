@@ -1,6 +1,6 @@
 class FavoritesController < ApplicationController
 
   def index
-    @favorites = Favorite.where(id:session[:user_id])
+    @pictures = User.find(session[:user_id]).favorite_pictures
   end
 end
