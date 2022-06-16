@@ -15,6 +15,8 @@ class PicturesController < ApplicationController
   end
 
   def edit
+    byebug
+      redirect_to pictures_path, notice: "投稿者ではないため編集できません"  unless session[:user_id] == Picture.find_by(id: params[:id])[:user_id]
   end
 
   def favorite

@@ -20,7 +20,7 @@
         <td><%= picture.image %></td>
         <td><%= picture.coment %></td>
         <td><%= link_to 'Show', picture %></td>
-        <td><%= link_to 'Edit', edit_picture_path(picture) %></td>
+        <td><%= link_to 'Edit', edit_picture_path(picture) if picture.user_id == session[:user_id] %></td>
         <td><%= link_to 'Destroy', picture, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
