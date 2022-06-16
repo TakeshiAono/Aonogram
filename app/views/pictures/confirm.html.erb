@@ -3,7 +3,7 @@
   <%= @picture.coment  %>
   <%= form.hidden_field :coment  %>
   <%= form.label :image  %>
-  <%= image_tag @picture.image.url  %>
+  <%= image_tag @picture.image.url if @picture.image.url  %>
   <%= form.hidden_field :image_cache  %>
   <%= form.submit %>
 <% end %>

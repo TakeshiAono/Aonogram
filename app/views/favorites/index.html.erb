@@ -1,0 +1,5 @@
+<%= byebug %>
+<%= form_with(model:@favorites, local: true) do |favorite| %>
+  <%= favorite.text_field :user_id %>
+  <%= favorite.text_field :picture_id %>
+<% end %>
