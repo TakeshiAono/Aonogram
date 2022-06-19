@@ -1,3 +1,11 @@
-<p>ログインユーザー:<%= @user.name %></p>
-<%= image_tag @user.image.url, height:"100px", width:"100px" %>
-<%= link_to "アイコン編集", new_user_path %>
+<div  class="icon_container">
+  <div class = "d-flex align-items-center">
+    ログインユーザー:<%= @user.name %>
+    <div class = "mr-auto">
+      <%= image_tag @user.image.url,class:"icon_image rounded-circle border border-dark" %>
+    </div>
+    <%= render 'layouts/logout' unless URI.parse(request.url).path == new_login_path || URI.parse(request.url).path == new_account_path  %>
+  </div>
+  <p><%= link_to "アイコン編集", new_user_path %></p>
+  <p><%= link_to "お気に入り一覧", favorites_path %></p>
+</div>
