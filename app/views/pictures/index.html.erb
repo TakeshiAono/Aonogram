@@ -5,8 +5,10 @@
 <h3 class = "btn btn-primary "><%= link_to 'New Picture', new_picture_path, class:"text-reset" %></h3>
 
 <div class = "card_box d-flex align-content-start flex-wrap">
+  <% card_num = 0 %>
   <% @pictures.reverse_each do |picture| %>
-    <div class = "card border border-dark m-2">
+    <% card_num += 1 %>
+    <div class = "card border border-dark m-2" id = "card<%= card_num %>">
       <%= image_tag picture.image.url, class:"image card-img-top" %>
       <img src="/assets/6668d470.jpg" alt="favorite" class = "favorite_img">
       <p class = "favorite_count"><%= picture.favorites.count %></p>
@@ -15,7 +17,7 @@
           投稿者：<%= picture.user.name %>
           <%= image_tag picture.user.image.url, height:"50px", width:"50px",class:"rounded-circle border border-dark" %>
         </div>
-          <div class = "card-text">
+          <div class = "card-text" id = "card_text<%= card_num %>" >
             <p class = "mr-auto">コメント:<%= picture.coment %></p>
             <div class = "d-flex flex-row-reverse bd-highlight">
               <%= link_to 'Destroy', picture, method: :delete, data: { confirm: 'Are you sure?' }, class:"p-2" %>
@@ -27,3 +29,4 @@
     </div>
   <% end %>
 </div>
+<%= javascript_pack_tag 'card_pop_up', 'data-turbolinks-track': 'reload' %>
