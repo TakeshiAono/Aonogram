@@ -1,5 +1,6 @@
 .image{
   height: 200px;
+  cursor: pointer;
 }
 
 .favorite_img{

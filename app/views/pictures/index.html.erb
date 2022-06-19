@@ -4,11 +4,11 @@
 <h1>Pictures</h1>
 <h3 class = "btn btn-primary "><%= link_to 'New Picture', new_picture_path, class:"text-reset" %></h3>
 
-<div class = "card_box d-flex align-content-start flex-wrap">
+<div class = "card_box align-content-start flex-wrap">
   <% card_num = 0 %>
   <% @pictures.reverse_each do |picture| %>
     <% card_num += 1 %>
-    <div class = "card border border-dark m-2" id = "card<%= card_num %>">
+    <div class = "card border border-dark m-2 float-left" id = "card<%= card_num %>">
       <%= image_tag picture.image.url, class:"image card-img-top" %>
       <img src="/assets/6668d470.jpg" alt="favorite" class = "favorite_img">
       <p class = "favorite_count"><%= picture.favorites.count %></p>
