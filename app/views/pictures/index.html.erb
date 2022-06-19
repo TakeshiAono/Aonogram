@@ -3,6 +3,7 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Pictures</h1>
+<h3 class = "btn btn-primary "><%= link_to 'New Picture', new_picture_path, class:"text-reset" %></h3>
 
 <table>
   <thead>
@@ -17,7 +18,23 @@
     <% @pictures.each do |picture| %>
       <tr>
         <td><%= picture.user_id %></td>
-        <td><%= picture.image %></td>
+        <td>
+          <div class = "card border border-dark m-2 d-flex">
+            <%= image_tag picture.image.url, class:"image card-img-top" %>
+            <div class = "card-body ">
+                投稿者：<%= picture.user.name %>
+                <%= image_tag @user.image.url, height:"50px", width:"50px",class:"rounded-circle border border-dark" %>
+              <div class = "card-title">
+                コメント:<%= picture.coment %>
+              </div>
+              <div class = "card-text d-flex flex-row-reverse bd-highlight">
+                <%= link_to 'Destroy', picture, method: :delete, data: { confirm: 'Are you sure?' }, class:"p-2" %>
+                <%= link_to 'Edit', edit_picture_path(picture), class:"p-2" if picture.user_id == session[:user_id] %>
+                <%= link_to 'Show', picture, class:"p-2" %>
+              </div>
+            </div>
+          </div>
+        </td>
         <td><%= picture.coment %></td>
         <td><%= link_to 'Show', picture %></td>
         <td><%= link_to 'Edit', edit_picture_path(picture) if picture.user_id == session[:user_id] %></td>
@@ -26,6 +43,3 @@
     <% end %>
   </tbody>
 </table>
-
-<%= link_to 'New Picture', new_picture_path %>
-

@@ -1,8 +1,16 @@
-<%= form_with(local: true, model: @user, url:login_index_path) do |user| %>
-  <%= user.label :email %>
-  <%= user.text_field :email %>
-  <%= user.label :password %>
-  <%= user.text_field :password, type: :password %>
-  <%= user.submit "ログイン" %>
-<% end %>
-<%= link_to "アカウント登録", new_account_path %>
+<div class = "wrapper">
+  <div class = "position_relative" >
+    <div class = "position_absolute ">
+      <div class = "border border-dark border-3 p-3 rounded-1">
+        <%= form_with(local: true, model: @user, url:login_index_path) do |user| %>
+          <p><%= user.label :email %></p>
+          <p><%= user.text_field :email %></p>
+          <p><%= user.label :password %></p>
+          <p><%= user.text_field :password, type: :password %></p>
+          <p><%= user.submit "ログイン", class:"btn btn-primary" %></p>
+        <% end %>
+        <p class = "account"><%= link_to "アカウント登録", new_account_path %></p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+html, body {
+  height: 100%;
+}
+
+.wrapper {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  width: 300px;
+}
+
+.position_relative {
+  display: flex;
+  width: 500px;
+  height: 500px;
+  display: block;
+}
+
+.position_absolute{
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 300px;
+}
+
+.account{
+  flex: none;
+}
+

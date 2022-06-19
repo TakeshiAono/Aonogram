@@ -11,7 +11,7 @@
 
   <body>
     <%= render 'layouts/logout' unless URI.parse(request.url).path == new_login_path || URI.parse(request.url).path == new_account_path  %>
-    <%= yield %>
+      <%= yield %>
   </body>
 
 </html>

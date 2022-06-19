@@ -1,9 +1,17 @@
-<%= form_with(local: true, model: @user, url: accounts_path) do |user| %>
-  <%= user.label :name %>
-  <%= user.text_field :name %>
-  <%= user.label :email %>
-  <%= user.text_field :email %>
-  <%= user.label :password %>
-  <%= user.text_field :password %>
-  <%= user.submit "登録" %>
-<% end %>
+<div class = "wrapper">
+  <div class = "position_relative" >
+    <div class = "position_absolute ">
+      <div class = "border border-dark border-3 p-3 rounded-1">
+      <%= form_with(local: true, model: @user, url: accounts_path) do |user| %>
+        <p><%= user.label :name %></p>
+        <p><%= user.text_field :name %></p>
+        <p><%= user.label :email %></p>
+        <p><%= user.text_field :email %></p>
+        <p><%= user.label :password %></p>
+        <p><%= user.text_field :password %></p>
+        <p><%= user.submit "登録",class:"btn btn-primary" %></p>
+      <% end %>
+    </div>
+    </div>
+  </div>
+</div>
